@@ -19,6 +19,7 @@ import re
 # parse_counted_words('101 dalmations!') should return ('101', 'dalmations') ...
 
 ## Write code to define your parse_counted_words function here.
+
 def parse_counted_words(mystring):
     mystring = mystring.rstrip()
     breakdown_list = re.findall("\d+\s\W?[A-z]+", mystring)
@@ -39,9 +40,12 @@ def parse_counted_words(mystring):
 ## PART 2: 200 points
 
 ## We have provided a text file computer_paths.txt. It's not incredibly long -- you can scan through it, but do NOT hard code your answers! Each line contains 1 filesystem path.
+file = open('computer_paths.txt')
+file = file.read()
+file = file.rstrip()
 
 ## (a) Write Python code to determine how many of these paths identify FILES, not directories. Save that number in the variable file_paths_num.
-
+file_paths_num = len(re.findall("\.\w+",file))
 ## (b) Write Python code to determine how many of these paths are FULL paths, not relative paths. Save that number in the variable full_paths_num.
 
 ## (c) Write Python code to determine how many of these paths describe a Python file saved inside a folder called SI206. Save that number in the variable python_course_paths.
