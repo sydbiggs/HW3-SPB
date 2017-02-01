@@ -34,19 +34,25 @@ def parse_counted_words(mystring):
             final.append(current_tuple)
         return(final[-1])
 
-
-
-
 ## PART 2: 200 points
 
 ## We have provided a text file computer_paths.txt. It's not incredibly long -- you can scan through it, but do NOT hard code your answers! Each line contains 1 filesystem path.
 file = open('computer_paths.txt')
-file = file.read()
-file = file.rstrip()
+file = file.readlines()
 
 ## (a) Write Python code to determine how many of these paths identify FILES, not directories. Save that number in the variable file_paths_num.
-file_paths_num = len(re.findall("\.\w+",file))
+file_paths_num = 0
+for line in file:
+    line = line.rstrip()
+    if re.search("\.\w+",line):
+        file_paths_num = 1 + file_paths_num
+
 ## (b) Write Python code to determine how many of these paths are FULL paths, not relative paths. Save that number in the variable full_paths_num.
+full_paths_num = 0
+for line in file:
+    line = line.rstrip()
+    if re.search("^[/~]", line):
+        full_paths_num = 1 + full_paths_num
 
 ## (c) Write Python code to determine how many of these paths describe a Python file saved inside a folder called SI206. Save that number in the variable python_course_paths.
 
