@@ -55,7 +55,11 @@ for line in file:
         full_paths_num = 1 + full_paths_num
 
 ## (c) Write Python code to determine how many of these paths describe a Python file saved inside a folder called SI206. Save that number in the variable python_course_paths.
-
+python_course_paths = 0
+for line in file:
+    line = line.rstrip()
+    if re.search("(SI206)/([\S])+\.(py)", line):
+        python_course_paths = 1 + python_course_paths
 ## (d) Write Python code to determine how many of these paths describe a Microsoft file (a file that EITHER ends with .docx OR .xlsx, but nothing else counts) where the file name ends in a digit. Save that total in the variable microsoft_files_num.
 
 
